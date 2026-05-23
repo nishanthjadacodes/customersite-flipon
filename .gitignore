@@ -1,0 +1,22 @@
+# Dependencies
+node_modules/
+
+# Next.js build output
+.next/
+out/
+
+# Environment — never commit local .env, but .env.production is fine to commit
+# (it only references the public API URL, no secrets)
+.env.local
+.env.development.local
+
+# Misc
+.DS_Store
+*.log
+npm-debug.log*
+
+# Editor
+.vscode/
+.idea/
+
+.vercel

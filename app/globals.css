@@ -1,0 +1,136 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --prussian-blue: #003153;
+  --accent-yellow: #FFD700;
+  --accent-red: #DC143C;
+  --accent-blue: #4169E1;
+  --accent-gold: #FFB300;
+}
+
+* {
+  /* Smooth, consistent default transitions on every interactive element */
+  transition-property: background-color, border-color, color, fill, stroke,
+                       opacity, box-shadow, transform;
+  transition-timing-function: cubic-bezier(.4, 0, .2, 1);
+  transition-duration: 150ms;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.btn-primary {
+  @apply bg-prussian-blue text-white px-6 py-3 rounded-lg font-semibold
+         hover:bg-accent-blue hover:scale-[1.02] active:scale-[0.98]
+         shadow-sm hover:shadow-md
+         focus:outline-none focus:ring-2 focus:ring-accent-blue focus:ring-offset-2;
+}
+
+.btn-secondary {
+  @apply bg-accent-yellow text-prussian-blue px-6 py-3 rounded-lg font-semibold
+         hover:bg-yellow-300 hover:scale-[1.02] active:scale-[0.98]
+         shadow-sm hover:shadow-md
+         focus:outline-none focus:ring-2 focus:ring-accent-yellow focus:ring-offset-2;
+}
+
+.card {
+  @apply bg-white rounded-xl shadow-md p-6 border border-gray-200;
+}
+
+/* ─── Animations ──────────────────────────────────────────────────── */
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInScale {
+  from { opacity: 0; transform: scale(.97); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -400px 0; }
+  100% { background-position: 400px 0; }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.4s ease-out both;
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.45s cubic-bezier(.2, .8, .2, 1) both;
+}
+
+.animate-fade-in-scale {
+  animation: fadeInScale 0.35s cubic-bezier(.2, .8, .2, 1) both;
+}
+
+/* Stagger child cards in a grid for a polished entrance — nth-child delays. */
+.stagger > * {
+  animation: fadeInUp 0.45s cubic-bezier(.2, .8, .2, 1) both;
+}
+.stagger > *:nth-child(1)  { animation-delay: 0.02s; }
+.stagger > *:nth-child(2)  { animation-delay: 0.06s; }
+.stagger > *:nth-child(3)  { animation-delay: 0.10s; }
+.stagger > *:nth-child(4)  { animation-delay: 0.14s; }
+.stagger > *:nth-child(5)  { animation-delay: 0.18s; }
+.stagger > *:nth-child(6)  { animation-delay: 0.22s; }
+.stagger > *:nth-child(7)  { animation-delay: 0.26s; }
+.stagger > *:nth-child(8)  { animation-delay: 0.30s; }
+.stagger > *:nth-child(9)  { animation-delay: 0.34s; }
+.stagger > *:nth-child(10) { animation-delay: 0.38s; }
+.stagger > *:nth-child(11) { animation-delay: 0.42s; }
+.stagger > *:nth-child(12) { animation-delay: 0.46s; }
+
+/* Skeleton loading shimmer for nicer "loading…" states */
+.skeleton {
+  background: linear-gradient(90deg, #eef2f7 0%, #f7fafc 50%, #eef2f7 100%);
+  background-size: 800px 100%;
+  animation: shimmer 1.4s linear infinite;
+  border-radius: 0.5rem;
+}
+
+/* Generic spinner for in-button loading */
+.spinner {
+  display: inline-block;
+  width: 1rem;
+  height: 1rem;
+  border: 2px solid currentColor;
+  border-right-color: transparent;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+  vertical-align: middle;
+}
+
+/* Honour reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

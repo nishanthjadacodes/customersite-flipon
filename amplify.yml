@@ -1,0 +1,21 @@
+# AWS Amplify Hosting build spec for the FliponeX customer website.
+# Standard Next.js SSR build — Amplify auto-detects Next.js and handles
+# the .next output via its managed Next.js compute. Caching node_modules
+# and .next/cache cuts cold-build time by ~60%.
+version: 1
+frontend:
+  phases:
+    preBuild:
+      commands:
+        - npm ci
+    build:
+      commands:
+        - npm run build
+  artifacts:
+    baseDirectory: .next
+    files:
+      - '**/*'
+  cache:
+    paths:
+      - .next/cache/**/*
+      - node_modules/**/*

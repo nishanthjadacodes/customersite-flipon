@@ -13,6 +13,21 @@ const nextConfig = {
       { protocol: 'http', hostname: 'localhost' },
     ],
   },
+
+  // 301-redirect the old short legal-page slugs to the new canonical
+  // URLs. The short slugs (/privacy, /terms, /contact) were the
+  // original routes; we moved to longer, search-engine-friendly
+  // versions because Play Store + standard SEO crawlers look for
+  // /privacy-policy and /terms-and-conditions specifically.
+  // permanent: true tells crawlers to update their indexes and stops
+  // the old URLs from accumulating ranking weight separately.
+  async redirects() {
+    return [
+      { source: '/privacy', destination: '/privacy-policy', permanent: true },
+      { source: '/terms', destination: '/terms-and-conditions', permanent: true },
+      { source: '/contact', destination: '/contact-us', permanent: true },
+    ];
+  },
 }
 
 module.exports = nextConfig

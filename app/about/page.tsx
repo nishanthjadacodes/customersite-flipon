@@ -157,7 +157,7 @@ export default function AboutPage() {
               Browse Services
             </Link>
             <Link
-              href="/contact"
+              href="/contact-us"
               className="inline-flex items-center justify-center bg-white text-prussian-blue px-6 py-3 rounded-lg font-semibold border-2 border-prussian-blue hover:bg-gray-50 transition-colors"
             >
               Contact Us

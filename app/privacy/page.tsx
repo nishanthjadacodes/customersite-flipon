@@ -1,45 +1,14 @@
 import type { Metadata } from 'next'
-import LegalPage from '../../components/LegalPage'
+import PrivacyPage from '../../components/PrivacyPage'
 
-export const metadata: Metadata = { title: 'Privacy Policy · FliponeX' }
-
-export default function Privacy() {
-  return (
-    <LegalPage
-      title="Privacy Policy"
-      subtitle="How we handle your documents and personal data."
-      lastUpdated={new Date().toLocaleDateString('en-IN', { year: 'numeric', month: 'long' })}
-    >
-      <p>
-        FliponeX Digital respects your privacy. We use your documents <strong>solely for the
-        requested service</strong>. Once the task is concluded, sensitive data is securely
-        purged from our active systems.
-      </p>
-      <p>
-        We <strong>never share or sell your data to third parties</strong>. Personal data
-        is stored encrypted at rest and is accessible only to authorised FliponeX staff who
-        need it to deliver the service you booked.
-      </p>
-
-      <h2>What we collect</h2>
-      <ul>
-        <li>Name, mobile number, and email — to create your account and contact you.</li>
-        <li>Documents you upload (Aadhaar, PAN, address proof, etc.) — only for the service in question.</li>
-        <li>Booking history, ratings, and chat transcripts — to improve service quality and resolve disputes.</li>
-      </ul>
-
-      <h2>How long we keep it</h2>
-      <p>
-        Documents are retained for the duration of the active booking plus a short
-        statutory window required by Indian law. After that they are purged from our
-        live systems.
-      </p>
-
-      <h2>Your rights</h2>
-      <p>
-        You may request export or deletion of your data at any time by writing to{' '}
-        <a href="mailto:support@fliponex.com">support@fliponex.com</a>.
-      </p>
-    </LegalPage>
-  )
+// The legal copy lives in components/PrivacyPage.tsx so both this
+// route and /privacy-policy render identical content. The canonical
+// annotation tells Google to index /privacy-policy as the primary
+// URL — this URL remains accessible (old emails, app builds, and
+// inbound links keep working) but Google de-duplicates them.
+export const metadata: Metadata = {
+  title: 'Privacy Policy · FliponeX',
+  alternates: { canonical: '/privacy-policy' },
 }
+
+export default PrivacyPage

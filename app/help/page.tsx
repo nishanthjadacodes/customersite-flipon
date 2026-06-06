@@ -61,7 +61,7 @@ export default function Help() {
       </div>
 
       <p className="mt-8">
-        Didn&apos;t find what you need? <a href="/contact-us">Talk to support</a> or{' '}
+        Didn&apos;t find what you need? <a href="/contact">Talk to support</a> or{' '}
         <a href="/grievance">raise a ticket</a>.
       </p>
     </LegalPage>
